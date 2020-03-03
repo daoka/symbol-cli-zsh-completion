@@ -1,0 +1,2 @@
+# symbol-cli-zsh-completion
+

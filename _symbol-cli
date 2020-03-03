@@ -1,0 +1,223 @@
+#compdef symbol-cli
+
+function __symbol-subcommands {
+  _values \
+    'subcommand' \
+    'account[Get account related information]' \
+    'block[Get block related information]' \
+    'chain[Get chain related information]' \
+    'converter[Convert between data types]' \
+    'metadata[Get metadata related information]' \
+    'monitor[Monitor blocks, transactions and errors]' \
+    'mosaic[Get mosaic related information]' \
+    'namespace[Get namespace related information]' \
+    'node[Get node related information]' \
+    'profile[Manage profiles]' \
+    'restriction[Get restrictions related information]' \
+    'transaction[Announce transactions]'
+}
+
+function __account-subcommands {
+  _values \
+    'subcommands' \
+    'aggregatebonded[Fetch aggregate bonded transactions from account]' \
+    'generate[Generate new accounts]' \
+    'incoming[Fetch incoming transactions from account]' \
+    'info[Get account information]' \
+    'outgoing[Fetch outgoing transactions from account]' \
+    'transactions[Fetch transactions from account]' \
+    'unconfirmed[Fetch unconfirmed transactions from account]'
+}
+
+function __block-subcommands {
+  _values \
+    'subcommands' \
+    'header[Get block header by height]' \
+    'receipts[Get the receipts triggered for a given block height]' \
+    'transactions[Get transactions for a given block height]'
+}
+
+function __chain-subcommands {
+  _values \
+    'subcommands' \
+    'height[Get the current height of the chain]' \
+    'score[Gets the current score of the chain]'
+}
+
+function __converter-subcommands {
+  _values \
+    'subcommands' \
+    'base32ToHexAddress[Address Base 32 -> Address hex converter.]' \
+    'hexToBase32Address[Address hex -> Address Base 32 converter.]' \
+    'namespaceNameToId[Namespace name -> NamespaceId converter.]' \
+    'numericStringToUInt64[Numeric string -> UInt64 converter.]' \
+    'payloadToTransaction[Payload -> Transaction converter.]' \
+    'privateKeyToPublicKey[Private key -> Public key converter.]' \
+    'publicKeyToAddress[Public key -> Address converter.]' \
+    'stringToKey[String -> UInt64 converter.]'
+}
+
+function __metadata-subcommands {
+  _values \
+    'subcommands' \
+    'account[Fetch metadata entries from an account]' \
+    'mosaic[Fetch metadata entries from an mosaic]' \
+    'namespace[Fetch metadata entries from an namespace]'
+}
+
+function __monitor-subcommands {
+  _values \
+    'subcommands' \
+    'aggregatebonded[Monitor aggregate bonded transactions added]' \
+    'all[Monitors new blocks, confirmed, aggregate bonded added, and status errors related to an account.]' \
+    'block[Monitor new blocks]' \
+    'confirmed[Monitor confirmed transactions added]' \
+    'cosignature[Monitor cosignatures added]' \
+    'status[Monitor transaction status error]' \
+    'unconfirmed[Monitor unconfirmed transactions added]'
+}
+
+function __mosaic-subcommands {
+  _values \
+    'subcommands' \
+    'info[Fetch mosaic info]'
+}
+
+function __namespace-subcommands {
+  _values \
+    'subcommands' \
+    'alias[Get mosaicId or address behind an namespace]' \
+    'info[Fetch namespace info]' \
+    'owned[Get owned namespaces]'
+}
+
+function __node-subcommands {
+  _values \
+    'subcommands' \
+    'health[Supplies information regarding the connection and services status]' \
+    'info[Get the REST server components versions]' \
+    'serverinfo[Get the REST server components versions]' \
+    'storageinfo[Get diagnostic information about the node storage]'
+}
+
+function __profile-subcommands {
+  _values \
+    'subcommands' \
+    'create[Create a new profile]' \
+    'decrypt[View profile credentials]' \
+    'import[Create a new profile with existing private key]' \
+    'list[Display the list of stored profiles]' \
+    'setdefault[Change the default profile]'
+}
+
+function __restriction-subcommands {
+  _values \
+    'subcommands' \
+    'account[Fetch account restrictions assigned to an address]' \
+    'mosaicaddress[Fetch mosaic restrictions assigned to an address]' \
+    'mosaicglobal[Fetch global restrictions assigned to a mosaic]'
+}
+
+function __transaction-subcommands {
+  _values \
+    'subcommands' \
+    'accountaddressrestriction[Allow or block incoming and outgoing transactions for a given a set of addresses]' \
+    'accountlink[Delegate the account importance to a proxy account]' \
+    'accountmetadata[Add custom data to an account (requires internet)]' \
+    'accountmosaicrestriction[Allow or block incoming transactions containing a given set of mosaics]' \
+    'accountoperationrestriction[Allow or block outgoing transactions by transaction type]' \
+    'addressalias[Set an alias to an address]' \
+    'cosign[Cosign an aggregate bonded transaction]' \
+    'info[Fetch transaction info]' \
+    'mosaic[Create a new mosaic]' \
+    'mosaicaddressrestriction[Set a mosaic restriction to an specific address (requires internet)]' \
+    'mosaicalias[Set an alias to a mosaic]' \
+    'mosaicglobalrestriction[Set a global restriction to a mosaic (requires internet) ]' \
+    'mosaicmetadata[Add custom data to a mosaic (requires internet) ]' \
+    'mosaicsupplychange[Change a mosaic supply]' \
+    'multisigmodification[Create or modify a multisig account]' \
+    'namespace[Register a namespace]' \
+    'namespacemetadata[Add custom data to a namespace (requires internet)]' \
+    'persistentharvestdelegation[Requests a node to add a remote account as a delegated harvester]' \
+    'secretlock[Announce a secret lock transaction]' \
+    'secretproof[Announce a secret proof transaction]' \
+    'status[Fetch transaction status]' \
+    'transfer[Send transfer transaction]'
+}
+
+function _symbol-cli {
+  _arguments -C \
+    '1:tasks:__symbol-subcommands' \
+    '*:: :->args' \
+    && ret=0
+
+  case $state in
+    (args)
+      case $words[1] in
+        (account)
+          _arguments -C \
+            '1: :__account-subcommands' \
+            && ret=0
+          ;;
+        (block)
+          _arguments -C \
+            '1: :__block-subcommands' \
+            && ret=0
+          ;;
+        (chain)
+          _arguments -C \
+            '1: :__chain-subcommands' \
+            && ret=0
+          ;;
+        (converter)
+          _arguments -C \
+            '1: :__converter-subcommands' \
+            && ret=0
+          ;;
+        (metadata)
+          _arguments -C \
+            '1: :__metadata-subcommands' \
+            && ret=0
+          ;;
+        (monitor)
+          _arguments -C \
+            '1: :__monitor-subcommands' \
+            && ret=0
+          ;;
+        (mosaic)
+          _arguments -C \
+            '1: :__mosaic-subcommands' \
+            && ret=0
+          ;;
+        (namespace)
+          _arguments -C \
+            '1: :__namespace-subcommands' \
+            && ret=0
+          ;;
+        (node)
+          _arguments -C \
+            '1: :__node-subcommands' \
+            && ret=0
+          ;;
+        (profile)
+          _arguments -C \
+            '1: :__profile-subcommands' \
+            && ret=0
+          ;;
+        (restriction)
+          _arguments -C \
+            '1: :__restriction-subcommands' \
+            && ret=0
+          ;;
+        (transaction)
+          _arguments -C \
+            '1: :__transaction-subcommands' \
+            && ret=0
+          ;;
+      esac
+      ;;
+  esac
+
+  return ret;
+}
+
