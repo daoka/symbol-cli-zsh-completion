@@ -20,21 +20,16 @@ function __symbol-subcommands {
 function __account-subcommands {
   _values \
     'subcommands' \
-    'aggregatebonded[Fetch aggregate bonded transactions from account]' \
     'generate[Generate new accounts]' \
-    'incoming[Fetch incoming transactions from account]' \
     'info[Get account information]' \
-    'outgoing[Fetch outgoing transactions from account]' \
-    'transactions[Fetch transactions from account]' \
-    'unconfirmed[Fetch unconfirmed transactions from account]'
 }
 
 function __block-subcommands {
   _values \
     'subcommands' \
-    'header[Get block header by height]' \
+    'info[Get block header by height]' \
     'receipts[Get the receipts triggered for a given block height]' \
-    'transactions[Get transactions for a given block height]'
+    'search[Search transactions]'
 }
 
 function __chain-subcommands {
@@ -81,6 +76,7 @@ function __mosaic-subcommands {
   _values \
     'subcommands' \
     'info[Fetch mosaic info]'
+    'search[Search transactions]'
 }
 
 function __namespace-subcommands {
@@ -138,11 +134,16 @@ function __transaction-subcommands {
     'multisigmodification[Create or modify a multisig account]' \
     'namespace[Register a namespace]' \
     'namespacemetadata[Add custom data to a namespace (requires internet)]' \
+    'nodekeylink[Link an account with a public key used by TLS to create sessions. Required for node operat]' \
     'persistentharvestdelegation[Requests a node to add a remote account as a delegated harvester]' \
+    'search[Search transactions]' \
     'secretlock[Announce a secret lock transaction]' \
     'secretproof[Announce a secret proof transaction]' \
     'status[Fetch transaction status]' \
-    'transfer[Send transfer transaction]'
+    'transfer[Send transfer transaction]' \
+    'uri[Announce transaction from URI]' \
+    'votingkeylink[Link an account with a BLS public key. Required for node operators willing to vote finalized blocks.]' \
+    'vrfkeylink[Link an account with a VRF public key. Required for all harvesting eligible accounts.]'
 }
 
 function _symbol-cli {

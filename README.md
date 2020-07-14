@@ -1,6 +1,7 @@
 # symbol-cli-zsh-completion
 
 Completion function for [symbol-cli](https://www.npmjs.com/package/symbol-cli)
+capable for v0.21.1 (0.9.6 network)
 
 ## Usage
 
