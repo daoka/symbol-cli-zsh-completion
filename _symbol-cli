@@ -21,7 +21,7 @@ function __account-subcommands {
   _values \
     'subcommands' \
     'generate[Generate new accounts]' \
-    'info[Get account information]' \
+    'info[Get account information]'
 }
 
 function __block-subcommands {
@@ -75,7 +75,7 @@ function __monitor-subcommands {
 function __mosaic-subcommands {
   _values \
     'subcommands' \
-    'info[Fetch mosaic info]'
+    'info[Fetch mosaic info]' \
     'search[Search transactions]'
 }
 
