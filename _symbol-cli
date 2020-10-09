@@ -35,6 +35,7 @@ function __block-subcommands {
 function __chain-subcommands {
   _values \
     'subcommands' \
+    'info[Get block header by height]' \
     'height[Get the current height of the chain]' \
     'score[Gets the current score of the chain]'
 }
@@ -68,6 +69,7 @@ function __monitor-subcommands {
     'block[Monitor new blocks]' \
     'confirmed[Monitor confirmed transactions added]' \
     'cosignature[Monitor cosignatures added]' \
+    'finalizedblock[Monitor finalized blocks]' \
     'status[Monitor transaction status error]' \
     'unconfirmed[Monitor unconfirmed transactions added]'
 }
@@ -118,7 +120,7 @@ function __transaction-subcommands {
   _values \
     'subcommands' \
     'accountaddressrestriction[Allow or block incoming and outgoing transactions for a given a set of addresses]' \
-    'accountlink[Delegate the account importance to a proxy account]' \
+    'accountkeylink[Delegate the account importance to a proxy account. Required for all accounts willing to activate delegated harvesting.]' \
     'accountmetadata[Add custom data to an account (requires internet)]' \
     'accountmosaicrestriction[Allow or block incoming transactions containing a given set of mosaics]' \
     'accountoperationrestriction[Allow or block outgoing transactions by transaction type]' \
